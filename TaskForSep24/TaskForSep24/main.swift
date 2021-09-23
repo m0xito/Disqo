@@ -19,34 +19,32 @@ print(count("Anna")) // 2
 // Modify function defined in the 1st point of the homework. Add new boolean parameter which will indicate should we calculate uppercase or lowercase 'a' symbol.
 
 
-func count2(_ str: String) -> Int {
-    var number = 0
-    if str.contains("a") || str.contains("A") {
-        for i in str {
-            if (i == "a") || (i == "A") {
-                number += 1
-            }
+func count2(_ str: String, bool: Bool) -> Int {
+    var counter = 0
+    for i in str {
+        if i == "a" && (bool == true) {
+            counter += 1
+        } else if i == "A" && (bool == false) {
+            counter += 1
         }
-        
-    } else {
-        print("No such letters")
     }
-    return number
+    return counter
+
 }
 
-print(count2("Felix"))
+print(count2("Margarita", bool: true))
 
 
 // Modify 1st point of the homework. Add multiple return values to the function so it can return the number of 'a' and 'A' symbols separately.
 
 
-func count3(_ str: String) -> [Int] {
-    var count = [0, 0]
+func count3(_ str: String) -> (Int, Int) {
+    var count = (0, 0)
     for i in str {
         if i == "a" {
-            count[0] += 1
+            count.0 += 1
         } else if i == "A" {
-            count[1] += 1
+            count.1 += 1
     }
 }
     return count
@@ -81,6 +79,9 @@ func Triangle(base: Double = 10, height: Double = 4) -> Double {
 
 let recArea = Triangle(base: 2, height: 8)
 print("Triangle area is \(recArea)")
+    
+let recArea2 = Triangle(base:2)
+print("Triangle area is \(recArea2)")
 
 // Write a function which has one in-out parameter of type string. Function must modify input parameter and remove all 'a' symbols. After calling the method print variable which was passed to the function.
 
@@ -100,14 +101,27 @@ print(gotMessage("I got message from ", from: &name))
 
 var phrase = "alibabu"
 
-func modify(phrase: inout String) -> String {
+/*func modify(phrase: inout String) -> String {
     var phrase2 = phrase
     var set: Set<Character> = ["a"]
     phrase2.removeAll(where: { set.contains($0) })
     return phrase2
 }
+*/
 
-print(modify(phrase: &phrase))
+/* func modify(phrase: inout String) -> String {
+    let letter: Set<Character> = ["a"]
+    phrase.removeAll(where: { letter.contains($0) } )
+    return phrase
+}
+ */
+
+func modifiedString(phrase: inout String)  {
+     phrase.removeAll {$0 == "a"}
+}
+modifiedString(phrase: &phrase)
+print(phrase)
+
 
 
 
@@ -117,8 +131,8 @@ func nums(num1: Int, num2: Int) -> Int {
     return num1 + num2
 }
 
-let sum = nums(num1: 5, num2: 4)
-print(sum)
+var mathfunction: (Int, Int) -> Int = nums
+print(mathfunction(40, 2))
 
 
 // Write a function which returns a function which compares 2 integers. Call first method to get comparator and later use comparator.
