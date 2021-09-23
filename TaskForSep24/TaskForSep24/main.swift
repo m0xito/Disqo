@@ -85,12 +85,29 @@ print("Triangle area is \(recArea)")
 // Write a function which has one in-out parameter of type string. Function must modify input parameter and remove all 'a' symbols. After calling the method print variable which was passed to the function.
 
 
-func remove(_ phrase: inout String ) -> String {
-    let letter = "a"
-    phrase.removeAll(where: { _ in letter.contains("a") })
-    return phrase
+/*
+ var name = "Mariam"
+
+func gotMessage(_ title: String, from name: inout String) -> String {
+    var title2 = title
+    title2.append(name)
+    return title2
 }
-print(remove("Hello")) // does not work
+
+print(gotMessage("I got message from ", from: &name))
+*/
+
+
+var phrase = "alibabu"
+
+func modify(phrase: inout String) -> String {
+    var phrase2 = phrase
+    var set: Set<Character> = ["a"]
+    phrase2.removeAll(where: { set.contains($0) })
+    return phrase2
+}
+
+print(modify(phrase: &phrase))
 
 
 
