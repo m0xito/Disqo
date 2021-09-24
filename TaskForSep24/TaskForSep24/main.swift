@@ -19,12 +19,12 @@ print(count("Anna")) // 2
 // Modify function defined in the 1st point of the homework. Add new boolean parameter which will indicate should we calculate uppercase or lowercase 'a' symbol.
 
 
-func count2(_ str: String, bool: Bool) -> Int {
+func count2(_ str: String, isUppercase: Bool) -> Int {
     var counter = 0
+    
+    let symbol: Character = isUppercase ? "A" : "a"
     for i in str {
-        if i == "a" && (bool == true) {
-            counter += 1
-        } else if i == "A" && (bool == false) {
+        if i == symbol {
             counter += 1
         }
     }
@@ -32,7 +32,9 @@ func count2(_ str: String, bool: Bool) -> Int {
 
 }
 
-print(count2("Margarita", bool: true))
+print(count2("Margarita", isUppercase: false))
+
+
 
 
 // Modify 1st point of the homework. Add multiple return values to the function so it can return the number of 'a' and 'A' symbols separately.
@@ -116,7 +118,7 @@ var phrase = "alibabu"
 }
  */
 
-func modifiedString(phrase: inout String)  {
+func modifiedString(phrase: inout String) {
      phrase.removeAll {$0 == "a"}
 }
 modifiedString(phrase: &phrase)
@@ -137,7 +139,7 @@ print(mathfunction(40, 2))
 
 // Write a function which returns a function which compares 2 integers. Call first method to get comparator and later use comparator.
 
-func function() -> Int   {
+func function() -> Int {
     
     func comparator(_ int1: Int, _ int2: Int) -> Int {
         let list = [int1, int2]
