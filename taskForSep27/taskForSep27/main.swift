@@ -21,9 +21,22 @@ print(sorted)
 
 // Create a function which receives 2 numbers as arguments and one closure which will be called with the sum value of provided 2 arguments. Your function should calculate the sum and then call closure with that calculated value.
 
-func someFunction(arg1: Double, arg2: Double) -> (Void) {
-    
+func sumOfNums(arg1: Int, arg2: Int, closure: (Int) -> Int) -> Int  {
+    let arg3 = arg1 + arg2
+    return closure(arg3)
 }
+
+print(sumOfNums(arg1: 3, arg2: 5, closure: { arg3 in return arg3 }))
+
+
+// Prepare the scenario(just few sentence paragraph) where you will describe how and when escaping closures can be used.
+
+/* Escaping closure can be used for example if we are sending some files to someone while we are writing to someone at the same time.
+ When a closure is marked as escaping in Swift, it means that the closure will outlive, or leave the scope that you've passed it to .
+ 
+ */
+
+
 
 
 

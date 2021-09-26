@@ -74,15 +74,15 @@ print("Factorial of 8 is \(factorial(of: 5))")
 
 // Experiment with default parameter values.
 
-func Triangle(base: Double = 10, height: Double = 4) -> Double {
+func triangle(base: Double = 10, height: Double = 4) -> Double {
     let area = 0.5 * (base * height)
     return area
 }
 
-let recArea = Triangle(base: 2, height: 8)
+let recArea = triangle(base: 2, height: 8)
 print("Triangle area is \(recArea)")
     
-let recArea2 = Triangle(base:2)
+let recArea2 = triangle(base:2)
 print("Triangle area is \(recArea2)")
 
 // Write a function which has one in-out parameter of type string. Function must modify input parameter and remove all 'a' symbols. After calling the method print variable which was passed to the function.
