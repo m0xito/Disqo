@@ -21,8 +21,8 @@ print(sorted)
 
 // Create a function which receives 2 numbers as arguments and one closure which will be called with the sum value of provided 2 arguments. Your function should calculate the sum and then call closure with that calculated value.
 
-func sumOfNums(arg1: Int, arg2: Int,_ closure: (Int) -> (Void))  {
-    print(closure(arg1 + arg2))
+func sumOfNums(arg1: Int, arg2: Int, _ closure: (Int) -> (Void))  {
+    closure(arg1 + arg2)
 }
 var closure: (Int) -> (Void) = { num in
     print(num)

@@ -97,13 +97,13 @@ import Cocoa
 //}
 
 
-func makeIncrementer(forIncrement amount: Int) -> () -> Int {
-    var runningTotal = 0
-
-    func incrementer() -> Int {
-        runningTotal += amount
-        return runningTotal
-    }
+//func makeIncrementer(forIncrement amount: Int) -> () -> Int {
+//    var runningTotal = 0
+//
+//    func incrementer() -> Int {
+//        runningTotal += amount
+//        return runningTotal
+//    }
 
 //    the same ^^^^
 //    let incrementer = { () -> Int in
@@ -111,19 +111,33 @@ func makeIncrementer(forIncrement amount: Int) -> () -> Int {
 //        return runningTotal
 //    }
 
-    return incrementer
-}
+//    return incrementer
+//}
+//
+//let incremntByTwenty = makeIncrementer(forIncrement: 20)
+//print(incremntByTwenty())
+//print(incremntByTwenty())
+//print(incremntByTwenty())
+//
+//let incremntByThirty = makeIncrementer(forIncrement: 30)
+//print(incremntByThirty())
+//print(incremntByThirty())
+//print(incremntByThirty())
+//
+//let alsoIncremntByTwenty = incremntByTwenty
+//print(alsoIncremntByTwenty())
+//print(incremntByTwenty())
 
-let incremntByTwenty = makeIncrementer(forIncrement: 20)
-print(incremntByTwenty())
-print(incremntByTwenty())
-print(incremntByTwenty())
 
-let incremntByThirty = makeIncrementer(forIncrement: 30)
-print(incremntByThirty())
-print(incremntByThirty())
-print(incremntByThirty())
 
-let alsoIncremntByTwenty = incremntByTwenty
-print(alsoIncremntByTwenty())
-print(incremntByTwenty())
+//let list = [3, 6, -2, -5, 7, 3]
+//var product = 1
+//for i in list {
+//    product *= i
+//}
+
+
+// Create an enum for compass directions(north, east ...) and then use that enum in switch/case to print each direction for specific enum case. For instance print text can be in this format "Your direction is north".
+
+
+
