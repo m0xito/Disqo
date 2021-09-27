@@ -14,20 +14,20 @@ print(size)
 // Create an array of strings and sort them by calling sorted(by: ...) method and provide < or > operator as a closure value(sort criteria). This example exists in the book.
 
 
-var sorted = arrOfStrings.sorted(by: { $0 < $1 })
+var sorted = arrOfStrings.sorted(by: <)
 print(sorted)
 
 
 
 // Create a function which receives 2 numbers as arguments and one closure which will be called with the sum value of provided 2 arguments. Your function should calculate the sum and then call closure with that calculated value.
 
-func sumOfNums(arg1: Int, arg2: Int, closure: (Int) -> Int) -> Int  {
-    let arg3 = arg1 + arg2
-    return closure(arg3)
+func sumOfNums(arg1: Int, arg2: Int,_ closure: (Int) -> (Void))  {
+    print(closure(arg1 + arg2))
 }
-
-print(sumOfNums(arg1: 3, arg2: 5, closure: { arg3 in return arg3 }))
-
+var closure: (Int) -> (Void) = { num in
+    print(num)
+}
+sumOfNums(arg1: 5, arg2: 10, closure)
 
 // Prepare the scenario(just few sentence paragraph) where you will describe how and when escaping closures can be used.
 
