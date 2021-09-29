@@ -69,4 +69,10 @@ if mood2 == mood {
 
 
 
+let var1 = SimpleClass()
+let var2 = var1
+let var3 = SimpleClass()
 
+if var3 !== var1 {
+    print("True")
+}
