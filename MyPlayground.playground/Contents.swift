@@ -138,6 +138,22 @@ import Cocoa
 
 
 // Create an enum for compass directions(north, east ...) and then use that enum in switch/case to print each direction for specific enum case. For instance print text can be in this format "Your direction is north".
+//
+//func adjacentElementsProduct(inputArray: [Int]) -> Int {
+//    return [inputArray[0] * inputArray[1], inputArray[2] * inputArray[3], inputArray[4] * inputArray[5] ].max() as! Int
+//}
+//
+//print(adjacentElementsProduct(inputArray: [1, 3, -5, -5, 35, 3]))
 
 
 
+var aarr : [Int] = [1, 2, -3, -33, 23, 4]
+for i in aarr.indices {
+    var nums: Int = aarr[i] * aarr[i]
+    for num in nums {
+        var emptyArr = [Int]()
+        emptyArr.append(num)
+    }
+}
+
+print(emptyArr)
