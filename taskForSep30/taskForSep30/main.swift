@@ -10,7 +10,7 @@ import Foundation
 // Create a class which has only one property which is let. Create class instance and initialize that let property properly.
 
 class SimpleClass {
-    var name = ""
+    let name = ""
     
     init(_ name: String) {
         self.name = name
