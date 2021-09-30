@@ -1,159 +1,58 @@
 import Cocoa
 
+class Person {
+    var name = ""
+    var age = 0
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
 
-//func filterNumbersWithoutClosure(value: Int, numbers: [Int]) -> [Int] {
-//    var filteredNumbers: [Int] = []
-//    for num in numbers {
-//        if num < value {
-//            filteredNumbers.append(num)
-//        }
-//    }
-//    return filteredNumbers
-//}
-//
-//var filtered = filterNumbersWithoutClosure(value: 5, numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 19])
-//
-//print(filtered)
+   
+}
 
-//func filteredNumbersWithClosure(closure: (Int) -> Bool, numbers: [Int]) -> [Int] {
-//    var filteredNumbers: [Int] = []
-//    for num in numbers {
-//        if closure(num) {
-//            filteredNumbers.append(num)
-//        }
-//    }
-//    return filteredNumbers
-//}
-//
-//print(filteredNumbersWithClosure(closure: { num in
-//    return num < 5
-//}, numbers: [1,2,3,4,5,6]))
-//
-//func greaterThanThree(value: Int) -> Bool {
-//    return value > 3
-//}
-//
-//let filtered = filteredNumbersWithClosure(closure: greaterThanThree, numbers: [1, 2, 3, 4])
-//
-//print(filtered)
-
-
-
-//func filterClosure(closure: (Int) -> Bool, numbers: [Int]) -> [Int] {
-//    var filteredNumbers: [Int] = []
-//    for num in numbers {
-//        if closure(num) {
-//            filteredNumbers.append(num)
-//        }
-//    }
-//    return filteredNumbers
-//}
-//
-//func divisibleBy5(value: Int) -> Bool {
-//    return value % 5 == 0
-//}
-//
-//
-//var filter = filterClosure(closure: divisibleBy5, numbers: [1, 5, 10, 20, 21])
-//
-//
-//print(filter)
-
-//
-//var customersInLine = ["Valod", "Poghos", "Exish", "Peto", "Knyaz"]
-//print(customersInLine.count)
-//
-//let serveCustomer = {
-//    return customersInLine.removeFirst()
-//    // the same ^^^^^
-//    // customersInLine.remove(at: 0)
-//}
-//
-//print(customersInLine.count)
-//
-//print(serveCustomer())
-//print(customersInLine.count)
-
-
-
-//import AppKit
-//
-//func downloadImage(from url: URL,
-//                   onCompletion: @escaping (NSImage) -> (),
-//                   onFailure: @escaping (Error) -> ()) {
-//
-//    let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
-//        if let error = error {
-//            onFailure(error)
-//        } else if let data = data, let image = NSImage(data: data) {
-//            print(image)
-//            onCompletion(image)
-//        } else {
-//            onFailure(NSError(domain: "error", code: 0))
-//        }
-//    })
-//
-//    task.resume()
-//}
-
-
-//func makeIncrementer(forIncrement amount: Int) -> () -> Int {
-//    var runningTotal = 0
-//
-//    func incrementer() -> Int {
-//        runningTotal += amount
-//        return runningTotal
-//    }
-
-//    the same ^^^^
-//    let incrementer = { () -> Int in
-//        runningTotal += amount
-//        return runningTotal
-//    }
-
-//    return incrementer
-//}
-//
-//let incremntByTwenty = makeIncrementer(forIncrement: 20)
-//print(incremntByTwenty())
-//print(incremntByTwenty())
-//print(incremntByTwenty())
-//
-//let incremntByThirty = makeIncrementer(forIncrement: 30)
-//print(incremntByThirty())
-//print(incremntByThirty())
-//print(incremntByThirty())
-//
-//let alsoIncremntByTwenty = incremntByTwenty
-//print(alsoIncremntByTwenty())
-//print(incremntByTwenty())
-
-
-
-//let list = [3, 6, -2, -5, 7, 3]
-//var product = 1
-//for i in list {
-//    product *= i
-//}
-
-
-// Create an enum for compass directions(north, east ...) and then use that enum in switch/case to print each direction for specific enum case. For instance print text can be in this format "Your direction is north".
-//
-//func adjacentElementsProduct(inputArray: [Int]) -> Int {
-//    return [inputArray[0] * inputArray[1], inputArray[2] * inputArray[3], inputArray[4] * inputArray[5] ].max() as! Int
-//}
-//
-//print(adjacentElementsProduct(inputArray: [1, 3, -5, -5, 35, 3]))
-
-
-
-var aarr : [Int] = [1, 2, -3, -33, 23, 4]
-for i in aarr.indices {
-    var nums: Int = aarr[i] * aarr[i]
-    for num in nums {
-        var emptyArr = [Int]()
-        emptyArr.append(num)
+class Employee: Person {
+    
+    var salary = 0
+    
+    func doWork() {
+        print("Hi my name is \(name) and I have \(salary) salary")
     }
 }
 
-print(emptyArr)
+
+class Manager: Employee {
+    
+    var teamSize = 0
+
+    override func doWork() {
+        
+        super.doWork()
+        
+        salary += 5000
+        print("I am managing people \(name) ")
+
+
+    }
+    
+    func hiringPeople() {
+        print("I can hire people ")
+    }
+    
+}
+
+
+let p = Person(name: "jbjb")
+let e = Employee()
+let m = Manager(n)
+print (p.name)
+print (e.name)
+print (m.name)
+
+p.age = 32
+m.age = 343
+print(m.age)
+
+
+
