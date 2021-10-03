@@ -10,19 +10,14 @@ import Foundation
 // Create a class which has only one property which is let. Create class instance and initialize that let property properly.
 
 class SimpleClass {
-    let name = ""
+    let name: String = ""
     
-    init(_ name: String) {
-        self.name = name
-    }
     
-    func printName() {
-        print("Hi I am \(name)")
-    }
 }
 
-let simpleClass = SimpleClass("Tom")
-simpleClass.printName()
+var inst = SimpleClass()
+inst.name = "Milena"
+
 
 
 // Create a class which has one Int property. Write getter and setter for that property. Both getter and setter should print the text like "Setter called", "Getter called".
@@ -66,16 +61,14 @@ class Sum {
     var num2 = 2
     
     var num3: Int {
-        get {
+         
             num1 + num2
-        }
+        
     }
 }
 
 
-var inst = Sum()
-print(inst.num3)
-
+var instance = Sum()
 
 
 // Create a class which has one Int property. Use willSet and didSet to print the text to indicate that property is going to be changed.
@@ -100,3 +93,7 @@ change.number = 23
 
 print(change.number)
 
+
+
+
+ler arr = [

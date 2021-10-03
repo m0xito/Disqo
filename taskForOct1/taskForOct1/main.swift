@@ -1,14 +1,6 @@
-//
-//  main.swift
-//  taskForOct1
-//
-//  Created by Movses Aghabekyan on 30.09.21.
-//
-
 import Foundation
 
 // Create a struct called Student which has 2 properties student name and grade. Create a class which has an array of Students and has method to add new student to this array, method to remove all students and method to print current list of students.
-
 
 struct Student {
     var name: String
@@ -39,7 +31,6 @@ print(someClass.addNewStudent(student: person.name))
 
 
 // Create a class which has one Int property and one method which increment that property value. Experiment with self when accessing property.
-
 class SimpleClass {
     var num = 99
    
@@ -56,7 +47,6 @@ print(inc.incrementor(num: 5))
 
 
 // Create a struct which has 2 Int properties. Experiment with mutating keyword for struct's method which modifies that properties.
-
 struct Mutant {
     var num1: Int, num2: Int
   
@@ -74,7 +64,6 @@ print(mutate)
 
 
 // Create a class which has 2 Int properties. One of the properties should be static. Also create 2 methods and make one of them static. Experiment with static method non static property and static property non static method usage. Also experiment with static method and static property.
-
 
 
 class RichestMan {
@@ -110,4 +99,3 @@ class RichestMan {
 
 var millioner = RichestMan(regularPersonMoney: 3222, regularPersonName: "Anna")
 print(RichestMan.printRichestMan())
-
