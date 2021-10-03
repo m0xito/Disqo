@@ -20,8 +20,8 @@ class Students {
         return arrOfStudents
     }
     
-    func printStudents(students: [String]) -> [String] {
-        return arrOfStudents
+    func printStudents() {
+        print(arrOfStudents)
     }
 }
 var person = Student(name: "Mrdo", grade: 12)
@@ -31,24 +31,28 @@ print(someClass.addNewStudent(student: person.name))
 
 
 // Create a class which has one Int property and one method which increment that property value. Experiment with self when accessing property.
+
 class SimpleClass {
-    var num = 99
-   
+    var num: Int
     
-    func incrementor(num: Int) -> Int {
-        
-        return self.num + num
+    init(_ num : Int) {
+        self.num = num
+    }
+    
+    func incrementor() -> Int {
+        return self.num + 1
     }
 }
 
-var inc = SimpleClass()
-print(inc.incrementor(num: 5))
+var inc = SimpleClass(99)
+print(inc.incrementor())
 
 
 
 // Create a struct which has 2 Int properties. Experiment with mutating keyword for struct's method which modifies that properties.
 struct Mutant {
-    var num1: Int, num2: Int
+    var num1: Int
+    var num2: Int
   
     mutating func increment() {
         num1 += 1
@@ -63,39 +67,99 @@ mutate.increment()
 print(mutate)
 
 
+
+
+
 // Create a class which has 2 Int properties. One of the properties should be static. Also create 2 methods and make one of them static. Experiment with static method non static property and static property non static method usage. Also experiment with static method and static property.
 
-
-class RichestMan {
-    static var money = 1000
-    static var name = "Jane"
-    var regularPersonMoney = 0
-    var regularPersonName = "" {
-        didSet {
-            checkRichestMan()
-        }
+class ExperimentWithStatic {
+    static var maxHeight = 3
+    var regularPersonHeight: Int
+    
+    init(regularPersonHeight: Int) {
+        self.regularPersonHeight = regularPersonHeight
     }
     
-    init(regularPersonMoney: Int, regularPersonName: String) {
-        self.regularPersonMoney = regularPersonMoney
-        self.regularPersonName = regularPersonName
-    }
-    
-    func checkRichestMan() {
-        if regularPersonMoney > RichestMan.money {
-            RichestMan.money = regularPersonMoney
-            RichestMan.name = regularPersonName
-            
-
+     func checkMaxHeight()  {
+        if regularPersonHeight > ExperimentWithStatic.maxHeight {
+            ExperimentWithStatic.maxHeight = regularPersonHeight
         }
         
     }
-        static func printRichestMan() -> (){
-            print("The richest man \(name) has \(money)$$")
+    
+    static func printHighestMan() {
+        print("The height of the highest man in the world is \(ExperimentWithStatic.maxHeight)")
     }
     
 }
 
 
-var millioner = RichestMan(regularPersonMoney: 3222, regularPersonName: "Anna")
-print(RichestMan.printRichestMan())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Create a class which has 2 Int properties. One of the properties should be static. Also create 2 methods and make one of them static. Experiment with static method non static property and static property non static method usage. Also experiment with static method and static property.
+
+//
+//class RichestMan {
+//    static var money = 1000
+//    static var name = "Jane"
+//    var regularPersonMoney = 0
+//    var regularPersonName = "" {
+//        didSet {
+//            checkRichestMan()
+//        }
+//    }
+//
+//    init(regularPersonMoney: Int, regularPersonName: String) {
+//        self.regularPersonMoney = regularPersonMoney
+//        self.regularPersonName = regularPersonName
+//    }
+//
+//    func checkRichestMan() {
+//        if regularPersonMoney > RichestMan.money {
+//            RichestMan.money = regularPersonMoney
+//            RichestMan.name = regularPersonName
+//
+//
+//        }
+//
+//    }
+//        static func printRichestMan() -> (){
+//            print("The richest man \(name) has \(money)$$")
+//    }
+//
+//}
+//
+//
+//var millioner = RichestMan(regularPersonMoney: 3222, regularPersonName: "Anna")
+//print(RichestMan.printRichestMan())
