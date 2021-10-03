@@ -24,23 +24,26 @@ class MyArray {
 // Add Matrix class which will receive rows and columns count. Implement subscript operation for Matrix.
 
 
-class Martix {
-    var rows: Int
-    var columns: Int
-    var layout: [Double]
+class Matrix {
+    var grid = [Double]()
+    var rows: Int = 5
+    var columns: Int = 5
+    
+
     init(rows: Int, columns: Int) {
-            self.rows = rows
-            self.columns = columns
-            layout = Array(repeating: 0.0, count: rows * columns)
+        self.rows = rows
+        self.columns = columns
     }
-    subscript(row: Int, column: Int ) -> Double {
+    
+    subscript(row: Int, column: Int) -> Double {
             get {
-                return layout[(row * columns) + column]
+                return grid[(row * columns) + column]
             }
-        set {
-            print(layout[(row * columns) + column])
+            set {
+                grid[(row * columns) + column] = newValue
+            }
         }
-    }
+
     
 }
 
