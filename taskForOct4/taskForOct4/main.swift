@@ -11,11 +11,13 @@ import Foundation
 
 
 class MyArray {
+    
     let number = [0, 1]
-    subscript(arr: [Int]) -> [Int] {
-        get {
-            return number // change
-        }
+    
+    subscript(index : Int) -> Int {
+        
+            return number[index] 
+        
     }
     
 }

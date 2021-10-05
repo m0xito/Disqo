@@ -8,14 +8,14 @@ struct Student {
 }
 
 class Students {
-    var arrOfStudents = [String]() // change
+    var arrOfStudents = [Student]()
     
-    func addNewStudent(student: String) -> [String] {
+    func addNewStudent(student: Student) -> [Student] {
         arrOfStudents.append(student)
         return arrOfStudents
     }
     
-    func removeStudents() -> [String] {
+    func removeStudents() -> [Student] {
         arrOfStudents.removeAll()
         return arrOfStudents
     }
@@ -26,7 +26,8 @@ class Students {
 }
 var person = Student(name: "Mrdo", grade: 12)
 let someClass = Students()
-print(someClass.addNewStudent(student: person.name))
+
+print(someClass.addNewStudent(student: person))
 
 
 
@@ -39,13 +40,19 @@ class SimpleClass {
         self.num = num
     }
     
-    func incrementor() -> Int {
-        return self.num + 1 // change
+    func incrementor() {
+        self.num += 1
     }
 }
 
 var inc = SimpleClass(99)
-print(inc.incrementor())
+inc.incrementor()
+print(inc.num)
+inc.incrementor()
+inc.incrementor()
+
+print(inc.num)
+
 
 
 
