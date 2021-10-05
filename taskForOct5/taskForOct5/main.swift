@@ -36,7 +36,7 @@ class Cube: Shape {
 
     override init() {
         super .init()
-        self.threedementional = true
+        self.threedementional = true  // change
     }
 }
 

@@ -1,16 +1,21 @@
 import Cocoa
 
-
-class AnotherClass {
-    var number: Int
-    
-    init!(_ number: Int) {
-        self.number = number
-        if number >= 0 {
-            self.number = number
-        }
-        
-    }
+class Person {
+    var residence: Residence?
 }
 
-var anotherCLass = AnotherClass(5)
+class Residence {
+    var numberOfRooms = 1
+}
+
+
+let john = Person()
+
+let roomCount = john.residence!.numberOfRooms
+
+
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}

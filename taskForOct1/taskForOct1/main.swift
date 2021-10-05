@@ -8,7 +8,7 @@ struct Student {
 }
 
 class Students {
-    var arrOfStudents = [String]()
+    var arrOfStudents = [String]() // change
     
     func addNewStudent(student: String) -> [String] {
         arrOfStudents.append(student)
@@ -40,7 +40,7 @@ class SimpleClass {
     }
     
     func incrementor() -> Int {
-        return self.num + 1
+        return self.num + 1 // change
     }
 }
 
@@ -53,7 +53,7 @@ print(inc.incrementor())
 struct Mutant {
     var num1: Int
     var num2: Int
-  
+    
     mutating func increment() {
         num1 += 1
         num2 += 2
@@ -80,7 +80,7 @@ class ExperimentWithStatic {
         self.regularPersonHeight = regularPersonHeight
     }
     
-     func checkMaxHeight()  {
+    func checkMaxHeight()  {
         if regularPersonHeight > ExperimentWithStatic.maxHeight {
             ExperimentWithStatic.maxHeight = regularPersonHeight
         }

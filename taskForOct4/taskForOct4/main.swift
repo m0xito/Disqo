@@ -14,7 +14,7 @@ class MyArray {
     let number = [0, 1]
     subscript(arr: [Int]) -> [Int] {
         get {
-            return number
+            return number // change
         }
     }
     
