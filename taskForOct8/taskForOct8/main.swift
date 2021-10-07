@@ -11,32 +11,34 @@ import Foundation
 
 
 class Game {
+    var map: Map?
     
-    var onlineGamersCount: OnlineGamersCount?
+    func strongestBot() -> Player? {
+        return map?.bots.max(by: { $0.strength > $1.strength })
 
-}
-
-
-class OnlineGamersCount {
-
-    var count = 3
-
-}
-
-
-class ReturnClass {
+//        instead of
+//        if let map = map {
+//            if !map.bots.isEmpty {
+//                return map.bots.max(by: { $0.strength > $1.strength })
+//            }
+//        }
+//
+//        return nil
+    }
     
-    var instance = OnlineGamersCount()
-    
-    
-    func returnClasses() -> Int? {
-        return instance.count
+    func emailOfStrongestPerson() -> String? {
+        return strongestBot()?.email
     }
 }
 
+class Map {
+    var grid = [[Int]]()
+    var bots = [Player]()
+}
 
-class AnotherClass {
-    
-    var instance = Game()
-    
+class Player {
+    var name: String = ""
+    var score: Int = 0
+    var strength = 34
+    var email: String?
 }

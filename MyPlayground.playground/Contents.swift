@@ -1,21 +1,50 @@
 import Cocoa
 
-class Person {
-    var residence: Residence?
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinsNeeded: Int)
+    case outOfStock
 }
 
-class Residence {
-    var numberOfRooms = 1
+
+
+
+
+struct Item {
+    var price: Int
+    var count: Int
 }
 
+class VendingMachine {
+    var inventory = [
+        "Candy Bar": Item(price: 12, count: 7),
+        "Chips": Item(price: 10, count: 4),
+        "Pretzels": Item(price: 7, count: 11)
+    ]
+    var coinsDeposited = 10
 
-let john = Person()
+    func vend(itemNamed name: String) throws {
+        guard let item = inventory[name] else {
+            throw VendingMachineError.invalidSelection
+        }
 
-let roomCount = john.residence!.numberOfRooms
+        guard item.count > 0 else {
+            throw VendingMachineError.outOfStock
+        }
 
+        guard item.price <= coinsDeposited else {
+            throw VendingMachineError.insufficientFunds(coinsNeeded: item.price - coinsDeposited)
+        }
 
-if let roomCount = john.residence?.numberOfRooms {
-    print("John's residence has \(roomCount) room(s).")
-} else {
-    print("Unable to retrieve the number of rooms.")
+        coinsDeposited -= item.price
+
+        var newItem = item
+        newItem.count -= 1
+        inventory[name] = newItem
+
+        print("Dispensing \(name)")
+    }
 }
+
+var inc = VendingMachine()
+try inc.vend(itemNamed: "Chips")

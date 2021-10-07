@@ -10,24 +10,23 @@ struct Student {
 class Students {
     var arrOfStudents = [Student]()
     
-    func addNewStudent(student: Student) -> [Student] {
+    func addNewStudent(student: Student)  {
         arrOfStudents.append(student)
-        return arrOfStudents
     }
     
-    func removeStudents() -> [Student] {
+    func removeStudents()  {
         arrOfStudents.removeAll()
-        return arrOfStudents
     }
     
     func printStudents() {
         print(arrOfStudents)
     }
 }
-var person = Student(name: "Mrdo", grade: 12)
-let someClass = Students()
 
-print(someClass.addNewStudent(student: person))
+let person = Student(name: "Mrdo", grade: 12)
+let student = Students()
+
+print(student.addNewStudent(student: person))
 
 
 
