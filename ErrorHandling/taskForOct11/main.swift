@@ -8,8 +8,6 @@
 import Foundation
 
 
-import Cocoa
-
 
 // Create an enum which conforms to Error protocol. Define 2 error cases in that enum, one error case name should be outOfBounds, for second set name which you want.
 
@@ -24,17 +22,18 @@ enum Errors: Error {
 
 
     
-    
-    func throwPossibleError(index: Int) throws  -> Int {
-        let arr = [0, 1, 2, 3, 4]
-        
-        guard arr[index] != nil else {
-            throw Errors.outOfBounds
-        }
-    return arr[index]
-}
 
-print(try? throwPossibleError(index: 3)) // crushs if index is more than 4
+func throwPossibleError(index: Int) throws  -> Int {
+    let arr = [0, 1, 2, 3, 4]
+    
+    if index < arr.count {
+        return arr[index]
+    } else {
+        throw Errors.outOfBounds
+    }
+        
+}
+print(try throwPossibleError(index: 4)) // crushs if index is more than 4
 
 
 // Write a code with do/catch blocks and inside do block throw second error defined in your enum. Handle it in your catch block and print appropriate message.
@@ -60,4 +59,8 @@ do {
 } catch {
     print("Got an error \(error)")
 }
+
+
+
+
 

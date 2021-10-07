@@ -1,5 +1,6 @@
 import Cocoa
 
+
 enum VendingMachineError: Error {
     case invalidSelection
     case insufficientFunds(coinsNeeded: Int)
@@ -21,7 +22,7 @@ class VendingMachine {
         "Chips": Item(price: 10, count: 4),
         "Pretzels": Item(price: 7, count: 11)
     ]
-    var coinsDeposited = 10
+    var coinsDeposited = 1
 
     func vend(itemNamed name: String) throws {
         guard let item = inventory[name] else {
@@ -45,6 +46,5 @@ class VendingMachine {
         print("Dispensing \(name)")
     }
 }
-
-var inc = VendingMachine()
-try inc.vend(itemNamed: "Chips")
+ var a = VendingMachine()
+try a.vend(itemNamed: "Chipas")
