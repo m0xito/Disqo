@@ -84,8 +84,8 @@ class Product {
         if number < 0 {
             return nil
         }
-            self.number = number
-        }
+        self.number = number
+    }
 }
 
 
