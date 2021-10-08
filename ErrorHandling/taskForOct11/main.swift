@@ -26,7 +26,7 @@ enum Errors: Error {
 func throwPossibleError(index: Int) throws  -> Int {
     let arr = [0, 1, 2, 3, 4]
     
-    if index < arr.count {
+    if ( index > 0 ) && ( index < arr.count ) {
         return arr[index]
     } else {
         throw Errors.outOfBounds

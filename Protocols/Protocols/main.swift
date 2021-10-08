@@ -114,4 +114,15 @@ protocol ClassRoomDelegate {
     
 }
 
+class School {
+    
+}
 
+extension School: ClassRoomDelegate {
+    func studentAdded(currentStudentCount: Int) {
+        
+    }
+    
+    let classRoom: ClassRoom
+    
+}
