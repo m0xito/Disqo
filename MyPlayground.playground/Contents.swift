@@ -1,50 +1,51 @@
 import Cocoa
 
-
-enum VendingMachineError: Error {
-    case invalidSelection
-    case insufficientFunds(coinsNeeded: Int)
-    case outOfStock
+protocol RandomNumberGenerator {
+    func random() -> Double
 }
 
 
-
-
-
-struct Item {
-    var price: Int
-    var count: Int
-}
-
-class VendingMachine {
-    var inventory = [
-        "Candy Bar": Item(price: 12, count: 7),
-        "Chips": Item(price: 10, count: 4),
-        "Pretzels": Item(price: 7, count: 11)
-    ]
-    var coinsDeposited = 1
-
-    func vend(itemNamed name: String) throws {
-        guard let item = inventory[name] else {
-            throw VendingMachineError.invalidSelection
-        }
-
-        guard item.count > 0 else {
-            throw VendingMachineError.outOfStock
-        }
-
-        guard item.price <= coinsDeposited else {
-            throw VendingMachineError.insufficientFunds(coinsNeeded: item.price - coinsDeposited)
-        }
-
-        coinsDeposited -= item.price
-
-        var newItem = item
-        newItem.count -= 1
-        inventory[name] = newItem
-
-        print("Dispensing \(name)")
+class LinearCongruentialGenerator: RandomNumberGenerator {
+    var lastRandom = 42.0
+    let m = 139968.0
+    let a = 3877.0
+    let c = 29573.0
+    func random() -> Double {
+        lastRandom = ((lastRandom * a + c)
+            .truncatingRemainder(dividingBy: m))
+        return lastRandom / m
     }
 }
- var a = VendingMachine()
-try a.vend(itemNamed: "Chipas")
+
+
+let generator = LinearCongruentialGenerator()
+
+
+
+
+class Dice {
+    let sides: Int
+    let generator: RandomNumberGenerator
+    init(sides: Int, generator: RandomNumberGenerator) {
+        self.sides = sides
+        self.generator = generator
+    }
+    func roll() -> Int {
+        return Int(generator.random() * Double(sides)) + 1
+    }
+}
+
+
+
+protocol DiceGame {
+    var dice: Dice { get }
+    func play()
+}
+
+
+
+protocol DiceGameDelegate: AnyObject {
+    func gameDidStart(_ game: DiceGame)
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+    func gameDidEnd(_ game: DiceGame)
+}

@@ -55,7 +55,7 @@ do {
     try division(num1: 5, num2: 0)
     
 } catch {
-    print("Got an error \(error)")
+    print("Got an error \(Errors.mathError)")
 }
 
 

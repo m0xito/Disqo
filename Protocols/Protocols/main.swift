@@ -98,31 +98,42 @@ class Human: OnlyForClass {
 
 
 class ClassRoom {
-    func addStudent()  {
-        
+    func addStudent() {
+        currentStudentsCount += 1
+        delegate?.studentAdded(currentStudentCount: 0)
     }
-    var currentStudentsCount: Int
     
-    init(currentStudentsCount: Int) {
-        self.currentStudentsCount = currentStudentsCount
-    }
+    var currentStudentsCount = 0
+    
+    
+    
+    weak var delegate: ClassRoomDelegate?
 }
 
 
-protocol ClassRoomDelegate {
+protocol ClassRoomDelegate: AnyObject {
     func studentAdded(currentStudentCount: Int)
     
 }
 
 class School {
     
+    var classRoom: ClassRoom?
+    
+    init(classRoom: ClassRoom) {
+        self.classRoom = classRoom
+    }
+    
+    
 }
 
 extension School: ClassRoomDelegate {
     func studentAdded(currentStudentCount: Int) {
-        
+       print("\(currentStudentCount)")
     }
     
-    let classRoom: ClassRoom
-    
 }
+
+
+var school = School()
+
