@@ -42,12 +42,12 @@ print(try throwPossibleError(index: 4)) // crushs if index is more than 4
 
 func division(num1: Int, num2: Int) throws -> Int {
     
-    guard num2 != 0  else {
-        throw Errors.mathError
-    }
-        
-    return num1 / num2
-        
+    if num2 == 0 {
+            throw Errors.mathError
+        }
+            
+            return num1 / num2
+ 
 }
 
 
