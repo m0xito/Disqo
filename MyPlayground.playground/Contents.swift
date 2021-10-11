@@ -1,51 +1,30 @@
-import Cocoa
 
-protocol RandomNumberGenerator {
-    func random() -> Double
-}
-
-
-class LinearCongruentialGenerator: RandomNumberGenerator {
-    var lastRandom = 42.0
-    let m = 139968.0
-    let a = 3877.0
-    let c = 29573.0
-    func random() -> Double {
-        lastRandom = ((lastRandom * a + c)
-            .truncatingRemainder(dividingBy: m))
-        return lastRandom / m
-    }
-}
-
-
-let generator = LinearCongruentialGenerator()
-
-
-
-
-class Dice {
-    let sides: Int
-    let generator: RandomNumberGenerator
-    init(sides: Int, generator: RandomNumberGenerator) {
-        self.sides = sides
-        self.generator = generator
-    }
-    func roll() -> Int {
-        return Int(generator.random() * Double(sides)) + 1
-    }
+protocol Container {
+    associatedtype Item: Equatable
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
 }
 
 
 
-protocol DiceGame {
-    var dice: Dice { get }
-    func play()
+func allItemsMatch<C1: Container, C2: Container>
+    (_ someContainer: C1, _ anotherContainer: C2) -> Bool
+    where C1.Item == C2.Item, C1.Item: Equatable {
+
+        // Check that both containers contain the same number of items.
+        if someContainer.count != anotherContainer.count {
+            return false
+        }
+
+        // Check each pair of items to see if they're equivalent.
+        for i in 0..<someContainer.count {
+            if someContainer[i] != anotherContainer[i] {
+                return false
+            }
+        }
+
+        // All items match, so return true.
+        return true
 }
 
-
-
-protocol DiceGameDelegate: AnyObject {
-    func gameDidStart(_ game: DiceGame)
-    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
-    func gameDidEnd(_ game: DiceGame)
-}
