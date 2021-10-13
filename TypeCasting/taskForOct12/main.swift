@@ -38,7 +38,7 @@ class Derived2: Base {
 let b = Base()
 let d1 = Derived1()
 let d2 = Derived2()
-
+ 
 print(d1 is Base)
 print(d2 is Derived2)
 print(d2 is Derived1)
