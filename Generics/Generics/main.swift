@@ -12,28 +12,24 @@ import Foundation
 
 
 
-func compare<T: Comparable>(a: T, b: T) -> MoreOrLess {
-    
-    
+func compare<T: Comparable>(a: T, b: T) -> Compare {
     
     if a > b {
-        return MoreOrLess.greater
+        return .greater
     } else if a == b {
-        return MoreOrLess.equal
-    } else {
-        return MoreOrLess.less
+        return .equal
     }
     
+    return .less
     
 }
 
 
-enum MoreOrLess {
+enum Compare {
     case less
     case greater
     case equal
 }
-
 
 print(compare(a: 9, b: 9))
 
@@ -51,8 +47,6 @@ class Person: Comparable {
         return lhs.age < rhs.age && lhs.weight < rhs.weight
     }
     
-    
-    
     let age: Int
     let weight: Int
  
@@ -65,24 +59,21 @@ class Person: Comparable {
 let personOne = Person(age: 18, weight: 75)
 let personTwo = Person(age: 15, weight: 55)
 
-compare(a: personOne.age, b: personTwo.age)
-compare(a: personOne.weight, b: personTwo.weight)
+print(compare(a: personOne, b: personTwo))
 
 
 
 // Extend pervious example to add type constraint syntax. After your changes compare method should work only with class types and does not work for Int, String, Double etc.
 
-func compareClasses<T: Comparable>(a: T, b: T) -> MoreOrLess where T: AnyObject   {
-    
+func compareClasses<T: Comparable>(a: T, b: T) -> Compare where T: AnyObject   {
     
     if a > b {
-        return MoreOrLess.greater
+        return .greater
     } else if a == b {
-        return MoreOrLess.equal
+        return .equal
     } else {
-        return MoreOrLess.less
+        return .less
     }
-    
     
 }
 
