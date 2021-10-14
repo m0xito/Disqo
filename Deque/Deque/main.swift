@@ -45,9 +45,8 @@ class MyCircleQueue<T> {
         }
     }
     
-    
     func isEmpty() -> Bool {
-        if counter > 0 {
+        if (counter > 0) ||  (leftStack.isEmpty && rightStack.isEmpty) {
             return false
         } else {
             return true
@@ -61,54 +60,35 @@ class MyCircleQueue<T> {
             return false
         }
     }
-
-    
-}
-
-
-// for pushBack and popBack. Still in the process
-class ForStacks<T>: CustomStringConvertible {
-    
-    
     
     var leftStack: [T] = []
     var rightStack: [T] = []
-    
-    var isEmpty: Bool {
-        return leftStack.isEmpty && rightStack.isEmpty
-    }
-    
+   
     var peek: T? {
         leftStack.isEmpty ? rightStack.first : leftStack.last
     }
     
-    
     var description: String {
-        if isEmpty {
+        if isEmpty() {
             return "Queue is empty"
         }
-        var allEleements: [T] = []
         if leftStack.isEmpty == false {
-            allEleements.append(contentsOf: rightStack)
+            arr.append(contentsOf: rightStack)
         }
         return "------Queue staeted------\n" +
-        allEleements.map({"\($0)"}).joined(separator: " --> ") +
+        arr.map({"\($0)"}).joined(separator: " --> ") +
         "\n-----Queue Finished-----"
     }
     
-    
-    
-    func enqueue(_ element: T) {
+    func pushBack(_ element: T) {
         rightStack.append(element)
     }
     
-    
-    func dequeue() -> T? {
+    func popBack() -> T? {
         
-        if isEmpty {
+        if isEmpty() {
             return nil
         }
-        
         
         if leftStack.isEmpty {
             leftStack = rightStack.reversed()
@@ -118,4 +98,12 @@ class ForStacks<T>: CustomStringConvertible {
         return leftStack.removeLast()
     }
     
+    
+    func insert(index: Int, element: T) {
+        arr.insert(element, at: index)
+    }
+    
+    
 }
+
+
