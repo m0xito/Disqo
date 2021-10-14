@@ -103,7 +103,11 @@ class MyCircleQueue<T> {
         arr.insert(element, at: index)
     }
     
+    func printArr() {
+        print(arr)
+    }
+    
 }
 var inst = MyCircleQueue<Any>(10)
-print(inst)
+inst.printArr()
 
