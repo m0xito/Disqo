@@ -1,71 +1,66 @@
-
-class RingBufferQueue<T> {
+class MyCircleQueue<T> {
+    var arr: [T] = []
+    var counter = 0
     
-    private var elements = [T?]()
-    private var front = -1
-    private var rear = -1
-    
-
-    init(count: Int) {
-        elements = Array(repeating: nil, count: count)
+    init(_ k: Int) {
+        Array(repeating: -1, count: k)
     }
     
-    var isEmpty: Bool {
-        (front == -1 && rear == -1) || (leftStack.isEmpty && rightStack.isEmpty)
-    }
-    
-    var peek: T? {
-        if isEmpty { return nil }
-        return elements[front]
-    }
-    
-    private func pushBack(element: T) -> Bool {
-        
-        // if queue is empty
-        if front == -1 && rear == -1 {
-            front = 0
-            rear = 0
-            elements[rear] = element
+    func pushFront(_ value: T) -> Bool {
+        if isFull() {
+            return false
+        } else {
+            arr.removeLast()
+            arr[0] = value
+            counter += 1
             return true
         }
         
-        rear = (rear + 1) % elements.count
-        elements[rear] = element
-        return true
     }
     
-    private func popFront() -> T? {
-        
-        if isEmpty { return nil }
-        
-        // if queue has only 1 element
-        
-        if front == rear {
-            defer {
-                elements[front] = nil
-                front = -1
-                rear = -1
-            }
-            return elements[front]
+    func popFront(_ value: T) -> Bool {
+        if isEmpty() {
+            return false
+        } else {
+            arr[counter - 1] = -1 as! T
+            counter -= 1
+            return true
         }
-        
-        defer {
-            elements[front] = nil
-            front = (front + 1) % elements.count
+            
+    }
+    
+    func first() -> Int {
+        if isEmpty() {
+            return -1
+        } else {
+            return arr[counter] as! Int
         }
-        return elements[front]
-         
+    }
+    
+    func last() -> Int {
+        if isEmpty() {
+            return -1
+        } else {
+            return arr[0] as! Int
+        }
+    }
+    
+    
+    func isEmpty() -> Bool {
+        if counter > 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func isFull() -> Bool {
+        if counter == arr.count {
+            return true
+        } else {
+            return false
+        }
     }
 
     
-    private var leftStack: [T] = []
-    private var rightStack: [T] = []
-    
-    var allElements: [T] = []
-    
-    var peek2: T? {
-        leftStack.isEmpty ? rightStack.first : leftStack.last
-    }
 }
-
-
