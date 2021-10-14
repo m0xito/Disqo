@@ -1,9 +1,10 @@
 class MyCircleQueue<T> {
+    
     var arr: [T] = []
     var counter = 0
     
     init(_ k: Int) {
-        Array(repeating: -1, count: k)
+        arr = Array(repeating: -1 as! T, count: k)
     }
     
     func pushFront(_ value: T) -> Bool {
@@ -98,12 +99,11 @@ class MyCircleQueue<T> {
         return leftStack.removeLast()
     }
     
-    
     func insert(index: Int, element: T) {
         arr.insert(element, at: index)
     }
     
-    
 }
-
+var inst = MyCircleQueue<Any>(10)
+print(inst)
 
