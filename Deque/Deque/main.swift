@@ -1,12 +1,16 @@
 class Queue<T> {
     
     private var arr: [T?]
+    private var rightStack: [T?] = []
+    private var leftStack: [T?] = []
     var isEmpty: Bool {
         return arr.isEmpty
     }
-    private var size: Int {
+     var size: Int {
         return arr.count
     }
+    
+    
     init(arr: [T?]) {
         self.arr = []
     }
@@ -33,10 +37,6 @@ class Queue<T> {
         }
     }
     
-    func pushFirst(element: T) {
-                                   
-    }
-    
     func first() -> T? {
         if arr.isEmpty == false {
             return arr[0]
@@ -51,6 +51,32 @@ class Queue<T> {
         return nil
     }
     
+    func pushBack(element: T) {
+        arr.append(element)
+    }
     
+    func pushFront(element: T) {
+        if arr.isEmpty {
+            arr.append(element)
+        } else {
+            
+        }
+    }
+    
+    func insert(element: T, index: Int) {
+        arr.insert(element, at: index)
+    }
+    
+    enum Errors: Error {
+        case OutOfBounds
+    }
+    
+     func subscripts(index: Int) throws -> T? {
+        return arr[index]
+     }
     
 }
+
+
+
+
