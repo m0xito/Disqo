@@ -1,43 +1,37 @@
-class Deque<T>{
-    
+class Deque<T> {
     enum Errors: Error {
         case OutOfBounds
     }
     
-    private var arr: [T?] = []
-    let index: Int
-    let count = 1
+     var arr: [T?] = []
+    
     var isEmpty: Bool {
         return arr.isEmpty
     }
      var size: Int {
         return arr.count
-    }
+     }
     
-    init(deque: Deque, index: Int) {
-        let deque: [T] = []
-        self.index = index
-    }
-    
-    
-    
-    
-    init(count: Int, index: Int) {
+    init(count: Int) {
         arr = Array(repeating: nil, count: count)
-        self.index = index
     }
     
-   
-    func popBack() {
-        if isEmpty == false {
-        arr.removeLast()
+    init(deque: Deque) {
+            let deque = arr
         }
+    
+    func popBack() -> T? {
+        if isEmpty == false {
+         return arr.removeLast()
+        }
+        return nil
     }
     
-    func popFront() {
+    func popFront() -> T? {
         if isEmpty == false {
-            arr[0] = nil
+         return arr.removeFirst()
         }
+        return nil
     }
     
     func first() -> T? {
@@ -55,106 +49,55 @@ class Deque<T>{
     }
     
     func pushBack(element: T) {
-        arr[arr.count - 1] = element
+        arr.append(element)
     }
     
     func pushFront(element: T) {
-        if arr[0] == nil {
-            arr[0] = element
-        }
-        
+        arr.insert(element, at: 0)
     }
     
     func insert(element: T, index: Int) {
-        if arr[index] == nil {
-            arr[index] = element
-        } else {
-            print("That index is busy")
-            
-        }
+        arr.insert(element, at: index)
     }
-
-    func getElement(index: Int) throws  -> T? {
-        guard index < arr.count else {
+    
+    func `subscript`(index: Int) throws -> T? {
+        guard index >= 0 && index < arr.count else {
             throw Errors.OutOfBounds
         }
         return arr[index]
      }
     
-    func checkErrors() {
-        do {
-            let res = try getElement(index: index)
-            print(res)
+    func linearSearch<T: Comparable>(element: T) -> T? {
+        for i in arr {
+            if i as! T == element {
+                return i as! T
+            }
         }
-        catch {
-            print("Got an error \(Errors.OutOfBounds)")
-        }
+        return nil
     }
+           
+    func quicksort<T: Comparable>(arr: [T]) -> [T] {
+        guard arr.count > 0 else { return [] }
+      
+      let pivot = arr[arr.count/2]
+      let less = arr.filter { $0 < pivot }
+      let equal = arr.filter { $0 == pivot }
+      let greater = arr.filter { $0 > pivot }
 
-    func sort<T: Comparable>(arr: [T]) -> [T] {
-        guard arr.count > 1 else { return arr }
-        
-        let leftArray = Array(arr[0..<arr.count/2])
-        let rightArray = Array(arr[arr.count/2..<arr.count])
-        
-        return merge(left: sort(arr: leftArray), right: sort(arr: rightArray))
+        return quicksort(arr: less) + equal + quicksort(arr: greater)
+    
     }
     
-    func binarySearch<T: Comparable>(searchValue: T) -> Bool {
-        var leftIndex = 0
-        var rightIndex = arr.count - 1
-        
-        while leftIndex <= rightIndex {
-            let middleIndex = (leftIndex + rightIndex) / 2
-            let middleValue = arr[middleIndex]
-            
-            if middleValue as! T  == searchValue {
-                return true
-            }
-            
-            if searchValue < middleValue as! T {
-                rightIndex = middleIndex - 1
-            }
-            
-            if searchValue > middleValue as! T {
-                leftIndex = middleIndex + 1
-            }
-        }
-        return false
+    enum TypesOfSorting {
+        case quick
     }
-    
-    func merge<T: Comparable>(left: [T], right: [T]) -> [T] {
-        var mergedArr = [T]()
-        var left = left
-        var right = right
+    func sort(typeOfSorting: TypesOfSorting) -> [T] {
         
-        while left.count > 0 && right.count > 0 {
-            if left.first! > right.first! {
-                mergedArr.append(left.removeFirst())
-            }
-            mergedArr.append(right.removeFirst())
-        }
-        return mergedArr + left + right
     }
     
     func findElement<T: Equatable>(element: T) -> Bool {
-        for i in arr {
-            if i as! T == element {
-                return true
-            }
-        }
-        return false
+       return arr.contains(element) ? true : false
     }
     
-    func printArr() {
-        print(arr)
-    }
-
 }
-
-
-var a = Deque<Any>(count: 2, index: 47)
-a.pushFront(element: 31)
-a.insert(element: 21, index: 1)
-
-
+   
