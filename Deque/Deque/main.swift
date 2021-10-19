@@ -3,7 +3,7 @@ class Deque<T> {
         case OutOfBounds
     }
     
-     var arr: [T?] = []
+     private var arr: [T?] = []
     
     var isEmpty: Bool {
         return arr.isEmpty
@@ -76,7 +76,7 @@ class Deque<T> {
         return nil
     }
            
-    func quicksort<T: Comparable>(arr: [T]) -> [T] {
+    func quickSort<T: Comparable>(arr: [T]) -> [T] {
         guard arr.count > 0 else { return [] }
       
       let pivot = arr[arr.count/2]
@@ -84,15 +84,22 @@ class Deque<T> {
       let equal = arr.filter { $0 == pivot }
       let greater = arr.filter { $0 > pivot }
 
-        return quicksort(arr: less) + equal + quicksort(arr: greater)
+        return quickSort(arr: less) + equal + quickSort(arr: greater)
     
     }
-    
+    // stexic chem haskanum mek el taza deque init sarqel@ chhaskaca inchi hamar er
     enum TypesOfSorting {
         case quick
     }
-    func sort(typeOfSorting: TypesOfSorting) -> [T] {
-        
+    
+    func sort(typeOfSorting: TypesOfSorting) {
+        var typeOfSorting = typeOfSorting
+        switch typeOfSorting {
+        case .quick:
+            arr.quickSort()
+        default:
+            return nil
+        }
     }
     
     func findElement<T: Equatable>(element: T) -> Bool {
