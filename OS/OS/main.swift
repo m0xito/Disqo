@@ -9,17 +9,17 @@ import Foundation
 
 class NumbersGenerator {
     func printData() {
-        let globalQueue1 = DispatchQueue.global().async {
+        let _ = DispatchQueue.global().async {
             for i in 0...9 {
                 print(i)
             }
         }
-        let globalQueue2 = DispatchQueue.global().async {
+        let _ = DispatchQueue.global().async {
             for i in 10...99 {
                 print(i)
             }
         }
-        let globalQueue3 = DispatchQueue.global().async {
+        let _ = DispatchQueue.global().async {
             for i in 100...999 {
                 print(i)
             }
@@ -35,5 +35,4 @@ numberGenerator.printData()
 numberGenerator.printData()
 numberGenerator.printData()
 let input = readLine()
-
 
