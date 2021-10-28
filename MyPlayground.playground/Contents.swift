@@ -1,30 +1,12 @@
- class Animal {
-    var legsCount: Int
-    
-    init(legsCount: Int) {
-        self.legsCount = legsCount
+func depositProfit(deposit: Int, rate: Int, threshold: Int) -> Int {
+    var count = 0
+    var deposit = deposit
+    while deposit < threshold {
+        deposit *= (1 + (rate / 100))
+        count += 1
     }
-    
-    
-    convenience init(anotherAnimal: String) {
-        var number = anotherAnimal == "bird" ? 2 : 4
-        self.init(legsCount: number)
-    }
- }
+    return count
+}
 
- 
- class Wolf: Animal {
-    var hasFur: Bool
-    
-    init(hasFur: Bool) {
-        self.hasFur = hasFur
-        super.init(legsCount: 4)
-    }
- }
- 
- 
- var animal = Animal(anotherAnimal: "bird")
- animal.legsCount
- 
- var wolf = Wolf(hasFur: true)
- wolf.legsCount
+
+print(depositProfit(deposit: 100, rate: 20, threshold: 150))
