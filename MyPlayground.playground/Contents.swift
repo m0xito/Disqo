@@ -1,12 +1,22 @@
-func depositProfit(deposit: Int, rate: Int, threshold: Int) -> Int {
-    var count = 0
-    var deposit = deposit
-    while deposit < threshold {
-        deposit *= (1 + (rate / 100))
-        count += 1
+func ret(a: String) -> Int {
+    for i in "hello2 " {
+        if let ab = Int(String(i)) {
+            return Int(String(i))!
+        }
     }
-    return count
+    return 0
+
 }
 
 
-print(depositProfit(deposit: 100, rate: 20, threshold: 150))
+print(ret(a: "k"))
+
+
+func firstDigit(inputString: String) -> Character {
+    for i in inputString {
+        if let aa = Int(String(i)) {
+            return i
+        }
+    }
+    return "1"
+}
