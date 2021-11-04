@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         // Label
         
         view.addSubview(label)
-        label.text = "0"
+        label.text = ""
         label.textColor = .blue
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         view.addSubview(generateButton)
         generateButton.translatesAutoresizingMaskIntoConstraints = false
         generateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        generateButton.setTitle("GENETATE", for: .normal)
+        generateButton.setTitle("GENERATE", for: .normal)
         generateButton.setTitleColor(.red, for: .normal)
         generateButton.titleLabel?.font =  UIFont(name: "", size: 40)
         generateButton.addTarget(self, action: #selector(letAction), for: .touchUpInside)
