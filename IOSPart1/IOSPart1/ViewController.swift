@@ -17,8 +17,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
         // Label
         
         view.addSubview(label)
@@ -30,7 +28,6 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 32.0)
         
-        
         // Generate Button
         
         view.addSubview(generateButton)
@@ -40,8 +37,6 @@ class ViewController: UIViewController {
         generateButton.setTitleColor(.red, for: .normal)
         generateButton.titleLabel?.font =  UIFont(name: "", size: 40)
         generateButton.addTarget(self, action: #selector(letAction), for: .touchUpInside)
-        
-       
         
         // Switch controller
         
@@ -57,6 +52,16 @@ class ViewController: UIViewController {
             switchControllButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -100)
             
         ])
+        
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { notification in
+            print("Entered background")
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { notification in
+            print("Become active")
+            self.switchControllButton.isOn = false
+            self.label.text = ""
+        }
     }
     
     @objc func letAction() {
