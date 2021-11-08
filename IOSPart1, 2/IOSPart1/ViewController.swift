@@ -53,12 +53,7 @@ class ViewController: UIViewController {
             
         ])
         
-        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { notification in
-            print("Entered background")
-        }
-        
         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { notification in
-            print("Become active")
             self.switchControllButton.isOn = false
             self.label.text = ""
         }
