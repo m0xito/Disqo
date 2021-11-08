@@ -31,10 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         print("Became active")
-        window?.rootViewController = ViewController()
-        ViewController().label.text = ""
-        ViewController().switchControllButton.isOn = false
-
+        let viewController = window?.rootViewController as! ViewController
+        viewController.label.text = ""
+        viewController.switchControllButton.isOn = false
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
