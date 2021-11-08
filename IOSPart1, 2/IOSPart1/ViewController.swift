@@ -53,10 +53,6 @@ class ViewController: UIViewController {
             
         ])
         
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { notification in
-            self.switchControllButton.isOn = false
-            self.label.text = ""
-        }
     }
     
     @objc func letAction() {
