@@ -36,6 +36,7 @@ class ViewController: UIViewController {
 
     let idCell = "MainCell"
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
