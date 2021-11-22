@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Application: Decodable {
+struct ApplicationResponse: Decodable {
     let appName: String
     let appVersion: String
     let appVendor: String
@@ -15,7 +15,8 @@ struct Application: Decodable {
     let backendAppVersion: String
     let backendAppVendor: String
     let backendDataFrom: String
+    
+    
 }
-
 
 

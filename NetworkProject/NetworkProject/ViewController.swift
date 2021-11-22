@@ -24,9 +24,16 @@ class ViewController: UIViewController {
             guard let data = data else { return }
             
             do {
-                let app = try JSONDecoder().decode(Application.self, from: data)
+                let app = try JSONDecoder().decode(ApplicationResponse.self, from: data)
                 DispatchQueue.main.async {
-                    self.multilineText.text = "\(app)"
+                    self.multilineText.text =
+                    "\(app.appName)\n" +
+                    "\(app.appVersion)\n" +
+                    "\(app.appVendor)\n" +
+                    "\(app.backendAppName)\n" +
+                    "\(app.backendAppVersion)\n" +
+                    "\(app.backendAppVendor)\n" +
+                    "\(app.backendDataFrom)"
                 }
             } catch {
                 print(error)
@@ -39,4 +46,8 @@ class ViewController: UIViewController {
     }
     
 }
+
+
+
+
 
