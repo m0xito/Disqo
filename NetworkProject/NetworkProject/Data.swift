@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Application: Decodable {
     let appName: String
     let appVersion: String

@@ -22,9 +22,6 @@ class ViewController: UIViewController {
             }
             guard let data = data else { return }
             
-//            let jsonString = String(data: data, encoding: .utf8)
-//            print(jsonString)
-
             do {
                 let app = try JSONDecoder().decode(Application.self, from: data)
                 DispatchQueue.main.async {
@@ -35,8 +32,6 @@ class ViewController: UIViewController {
             }
             
         }.resume()
-        
-       
     }
                                             
     @IBAction func request(_ sender: Any) {
