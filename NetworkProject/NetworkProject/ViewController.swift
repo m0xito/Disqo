@@ -8,11 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var multilineText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let urlString = "https://developer.o2.cz/mobility/sandbox/api/info"
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -30,13 +31,12 @@ class ViewController: UIViewController {
             } catch {
                 print(error)
             }
-            
         }.resume()
     }
-                                            
+    
     @IBAction func request(_ sender: Any) {
         multilineText.isHidden = false
-        }
+    }
     
 }
 
